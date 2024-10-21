@@ -11,7 +11,6 @@ const Products: React.FC = () => {
   }
   const { text } = context;
   const handleNavigate = () => {
-    // Navigate to the new page and pass 'text' as state
     navigate('/newpage', { state: { text } });
   };
   return (

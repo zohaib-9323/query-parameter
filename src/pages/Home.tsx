@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { text as constantText } from '../constant/Constant';
 import { TextContext } from '../components/TextContext';
+import { errors } from '../constant/Constant';
 
 const Home: React.FC = () => {
   const context = useContext(TextContext);
   if (!context) {
-    throw new Error('Home must be used within a TextProvider');
+    throw new Error(errors.homeError);
   }
   const { text } = context;
   return (

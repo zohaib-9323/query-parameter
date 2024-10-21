@@ -65,6 +65,7 @@ export const path = {
   team: '/team',
   message: '/messages',
   product: '/products',
+  newPage:'/newpage',
   any: '*',
 };
 
@@ -74,3 +75,6 @@ export const className = {
   navMenu: 'nav-menu',
   active: 'active',
 };
+export const errors ={
+  homeError:'Home must be used within a TextProvider',
+}
