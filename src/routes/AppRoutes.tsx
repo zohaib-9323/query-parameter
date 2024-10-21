@@ -7,6 +7,7 @@ import Products from '../pages/Products';
 import Teams from '../pages/Team';
 import Support from '../pages/Support';
 import Messages from '../pages/Messages';
+import NewPage from '../pages/NewPage';
 import { path } from '../constant/Constant';
 import { TextContext } from '../components/TextContext';
 
@@ -15,7 +16,14 @@ const AppRoutes: React.FC = () => {
   const queryParams = new URLSearchParams(location.search);
   const inputText = queryParams.get('text');
   const textContext = useContext(TextContext);
-  const setText = textContext?.setText;
+  if (!textContext) {
+    throw new Error('TextContext must be used within a TextProvider');
+  }
+   const { text, setText } = textContext;
+  // console.log(inputText)
+  //  console.log(textContext.text);
+  //  const setText = textContext.setText;
+  // console.log(setText)
   useEffect(() => {
     if (inputText && setText) {
       setText(inputText); 
@@ -33,6 +41,7 @@ const AppRoutes: React.FC = () => {
         <Route path={path.support} element={<Support />} />
         <Route path={path.message} element={<Messages />} />
         <Route path={path.any} element={<Home />} />
+        <Route path="/newpage" element={<NewPage />} />
       </Routes>
     </>
   );
